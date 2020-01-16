@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -31,6 +32,11 @@ namespace MortgageCalculatorWPFApp
         private void AddConfUnchecked(object sender, RoutedEventArgs e)
         {
             add.Visibility = Visibility.Hidden;
+        }
+        private void computeMortgage(object sender, RoutedEventArgs e)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("https://localhost:44322/");
         }
     }
 }

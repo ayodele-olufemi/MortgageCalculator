@@ -1,8 +1,10 @@
-﻿@{
+﻿@model MortgageDataIn
+
+@{
     ViewData["Title"] = "Home Page";
 }
-@model MortgageCalculatorWebApp.Models.MortgageDataIn
-<div class="text-center">
+
+@*<div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
     <div>
@@ -15,4 +17,68 @@
             @Html.EditorFor(m => m.CustomerDetails.FirstName)
         }
     </div>
+</div>*@
+<div>
+    <form asp-controller="home" asp-action="CalculateMortgage" method="post" class="mt-3">
+        <h2>Customer Details</h2>
+        <div class="form-group row">
+            <label asp-for="CustomerDetails.FirstName" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="CustomerDetails.FirstName" class="form-control" placeholder="First Name" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="CustomerDetails.MiddleName" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="CustomerDetails.MiddleName" class="form-control" placeholder="Middle Name" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="CustomerDetails.LastName" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="CustomerDetails.LastName" class="form-control" placeholder="Last Name" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="CustomerDetails.Email" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="CustomerDetails.Email" class="form-control" placeholder="Email" />
+            </div>
+        </div>
+        <h2>Mortgage Details</h2>
+        <div class="form-group row">
+            <label asp-for="LoanAmount" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="LoanAmount" class="form-control" placeholder="Loan Amount" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="AnnualRate" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="AnnualRate" class="form-control" placeholder="Annual Rate (%)" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="DurationYears" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="DurationYears" class="form-control" placeholder="Duration Years" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="DurationMonths" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="DurationMonths" class="form-control" placeholder="Duration Months" />
+            </div>
+        </div>
+        <div>
+            <input type="checkbox" name="compareConfiguration" value="" />
+            <label>Compare more configurations?</label><span>    </span>
+            <input type="button" name="addConf" value="Add" />
+        </div>
+        <div>
+            <button type="submit" class="alert-primary col-sm-2">Calculate</button>
+        </div>
+    </form>
 </div>
+
+    
