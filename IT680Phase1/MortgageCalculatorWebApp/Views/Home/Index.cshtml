@@ -1,8 +1,18 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
+@model MortgageCalculatorWebApp.Models.MortgageDataIn
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <div>
+        <h1>Mortgage Calculator</h1>
+        <p>Kindly fill the form below to use the Mortgage Calculator.</p>
+        <h2>Mortgage Calculator Form</h2>
+        @using (Html.BeginForm())
+        {
+            @Html.LabelFor(m => m.CustomerDetails.FirstName)
+            @Html.EditorFor(m => m.CustomerDetails.FirstName)
+        }
+    </div>
 </div>
