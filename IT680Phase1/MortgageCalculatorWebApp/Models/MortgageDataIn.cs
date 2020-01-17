@@ -9,7 +9,9 @@ namespace MortgageCalculatorWebApp.Models
 {
     public class MortgageDataIn
     {
+        
         [Required(ErrorMessage = "Loan amount is required")]
+        [Range(0,Double.MaxValue,ErrorMessage ="Enter a non-negative number")]
         [DisplayName("Loan Amount")]
         public double LoanAmount { get; set; }
         

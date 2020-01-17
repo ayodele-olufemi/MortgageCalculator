@@ -23,6 +23,7 @@ namespace MortgageCalculatorWebApp.Models
 
         [Required(ErrorMessage = "Email is required")]
         [DisplayName("Email")]
+        [EmailAddress]
         public string Email { get; set; }
     }
 }
