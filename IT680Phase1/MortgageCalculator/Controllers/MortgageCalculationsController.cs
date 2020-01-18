@@ -19,7 +19,7 @@ namespace MortgageCalculator.Controllers
             double monthlyInterestRate = dataIn.AnnualRate / 1200.0;
             int loanMonthsDuration = (dataIn.DurationYears * 12) + dataIn.DurationMonths;
             var monthlyPayment = (dataIn.LoanAmount * monthlyInterestRate) / (1 - Math.Pow(1 + monthlyInterestRate, -1.0 * loanMonthsDuration));
-            return monthlyPayment;
+            return Math.Round(monthlyPayment, 2);
         }
 
         [Route("CompareConfigurations")]

@@ -21,9 +21,9 @@ namespace MortgageCalculator.Controllers
             double loanAmount = dataOut.InputedData.LoanAmount;
             for (int i = 1; i <= numberOfMonths; i++)
             {
-                double monthlyInterest = loanAmount * dataOut.InputedData.AnnualRate / 1200;
-                var thisPeriod = new AmortizationDataOut(i, dataOut.MonthlyPayment, monthlyInterest, dataOut.MonthlyPayment - monthlyInterest, loanAmount - dataOut.MonthlyPayment + monthlyInterest);
-                loanAmount = loanAmount - dataOut.MonthlyPayment + monthlyInterest;
+                double monthlyInterest = Math.Round(loanAmount * dataOut.InputedData.AnnualRate / 1200, 2);
+                var thisPeriod = new AmortizationDataOut(i, dataOut.MonthlyPayment, monthlyInterest, Math.Round(dataOut.MonthlyPayment - monthlyInterest, 2), Math.Round(loanAmount - dataOut.MonthlyPayment + monthlyInterest, 2));
+                loanAmount = Math.Round(loanAmount - dataOut.MonthlyPayment + monthlyInterest, 2);
                 result.Add(thisPeriod);
             }
             return result;
