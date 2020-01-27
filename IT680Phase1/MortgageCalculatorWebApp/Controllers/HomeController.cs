@@ -26,25 +26,15 @@ namespace MortgageCalculatorWebApp.Controllers
         {
             return View();
         }
-        
-        public async Task<IActionResult> CalculateMortgage(MortgageDataIn dataIn)
+        [HttpGet]
+        public async Task<IActionResult> CalculateMortgageAndAmortizationList(string dataIn)
         {
-            if (ModelState.IsValid)
-            {
-                MortgageDataOut result = new MortgageDataOut();
-                var httpContent = new StringContent(JsonConvert.SerializeObject(dataIn), Encoding.UTF8, "application/json");
-                using (var httpClient = new HttpClient())
-                {
-                    using (var response = await httpClient.PostAsync("https://localhost:44322/printresults", httpContent))
-                    {
-                        string apiResponse = await response.Content.ReadAsStringAsync();
-                        result = JsonConvert.DeserializeObject<MortgageDataOut>(apiResponse);
-                    }
-                }
-                return View(result);
-            }
+            List<MortgageDataIn> dataInList = JsonConvert.DeserializeObject<List<MortgageDataIn>>(dataIn);
+
+            List<MortgageAndAmortization> results = new List<MortgageAndAmortization>();
             return View("Index");
         }
+
 
         public async Task<IActionResult> CalculateMortgageAndAmortization(MortgageDataIn dataIn)
         {
@@ -65,7 +55,44 @@ namespace MortgageCalculatorWebApp.Controllers
                         string apiResponse = await response.Content.ReadAsStringAsync();
                         result.AmortOut = JsonConvert.DeserializeObject<List<AmortizationDataOut>>(apiResponse);
                     }
+                }  
+                var totalInterest = 0.0;
+                foreach(var item in result.AmortOut)
+                {
+                    totalInterest += item.Interest;
                 }
+                result.TotalInterest = totalInterest;
+
+                if ((dataIn.DownPayment > 0) || (dataIn.ExtraMonthlyPayment > 0))
+                {
+                    dataIn.DownPayment = 0.0;
+                    dataIn.ExtraMonthlyPayment = 0.0;
+                    MortgageAndAmortization resultWithoutSavings = new MortgageAndAmortization();
+                    var httpContent3 = new StringContent(JsonConvert.SerializeObject(dataIn), Encoding.UTF8, "application/json");
+                    using (var httpClient = new HttpClient())
+                    {
+                        using (var response = await httpClient.PostAsync("https://localhost:44322/printresults", httpContent3))
+                        {
+                            string apiResponse = await response.Content.ReadAsStringAsync();
+                            resultWithoutSavings.MortOut = JsonConvert.DeserializeObject<MortgageDataOut>(apiResponse);
+                        }
+                        var httpContent4 = new StringContent(JsonConvert.SerializeObject(resultWithoutSavings.MortOut), Encoding.UTF8, "application/json");
+                        using (var response = await httpClient.PostAsync("https://localhost:44322/printamortization", httpContent4))
+                        {
+                            string apiResponse = await response.Content.ReadAsStringAsync();
+                            resultWithoutSavings.AmortOut = JsonConvert.DeserializeObject<List<AmortizationDataOut>>(apiResponse);
+                        }
+                    }
+                    var totalInterestWithoutSavings = 0.0;
+                    foreach (var item in resultWithoutSavings.AmortOut)
+                    {
+                        totalInterestWithoutSavings += item.Interest;
+                    }
+                    resultWithoutSavings.TotalInterest = totalInterestWithoutSavings;
+                    result.TotalSavings = resultWithoutSavings.TotalInterest - result.TotalInterest;
+                    result.EarlierMonthsDifference = resultWithoutSavings.AmortOut.Count() - result.AmortOut.Count();
+                }
+
                 return View(result);
             }
             return View("Index");

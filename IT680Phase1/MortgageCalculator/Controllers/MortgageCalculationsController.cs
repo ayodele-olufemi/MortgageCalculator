@@ -18,8 +18,8 @@ namespace MortgageCalculator.Controllers
         {
             double monthlyInterestRate = dataIn.AnnualRate / 1200.0;
             int loanMonthsDuration = (dataIn.DurationYears * 12) + dataIn.DurationMonths;
-            var monthlyPayment = (dataIn.LoanAmount * monthlyInterestRate) / (1 - Math.Pow(1 + monthlyInterestRate, -1.0 * loanMonthsDuration));
-            return Math.Round(monthlyPayment, 2);
+            var monthlyPayment = ((dataIn.LoanAmount - dataIn.DownPayment) * monthlyInterestRate) / (1 - Math.Pow(1 + monthlyInterestRate, -1.0 * loanMonthsDuration));
+            return Math.Round(monthlyPayment + dataIn.ExtraMonthlyPayment, 2);
         }
 
         [Route("CompareConfigurations")]
@@ -41,7 +41,6 @@ namespace MortgageCalculator.Controllers
             return new MortgageDataOut
             {
                 MonthlyPayment = CalculateMonthlyPayment(dataIn),
-                TotalInterest = CalculateMonthlyPayment(dataIn) * 180,
                 InputedData = dataIn
             };
         }

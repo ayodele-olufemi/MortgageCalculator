@@ -1,7 +1,10 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title></title>
+    <title>Result and Amortization table</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
 </head>
 <body>
     @model MortgageCalculatorWebApp.ViewModels.MortgageAndAmortization
@@ -17,15 +20,19 @@
         @Html.DisplayFor(model => model.MortOut.InputedData.CustomerDetails.LastName)!  You entered the following loan configuration(s):
     </p>
     <p>
-        <b>@Html.DisplayNameFor(model => model.MortOut.InputedData.LoanAmount): </b>$@Html.DisplayFor(model => model.MortOut.InputedData.LoanAmount);
+        <b>@Html.DisplayNameFor(model => model.MortOut.InputedData.LoanAmount): </b>@Html.DisplayFor(model => model.MortOut.InputedData.LoanAmount);
         <b>@Html.DisplayNameFor(model => model.MortOut.InputedData.AnnualRate): </b>@Html.DisplayFor(model => model.MortOut.InputedData.AnnualRate)%;
-        <b>@Html.DisplayNameFor(model => model.MortOut.InputedData.DurationYears): </b>@Html.DisplayFor(model => model.MortOut.InputedData.DurationYears) years; 
+        <b>@Html.DisplayNameFor(model => model.MortOut.InputedData.DownPayment): </b>@Html.DisplayFor(model => model.MortOut.InputedData.DownPayment);
+        <b>@Html.DisplayNameFor(model => model.MortOut.InputedData.ExtraMonthlyPayment): </b>@Html.DisplayFor(model => model.MortOut.InputedData.ExtraMonthlyPayment);
+        <b>@Html.DisplayNameFor(model => model.MortOut.InputedData.DurationYears): </b>@Html.DisplayFor(model => model.MortOut.InputedData.DurationYears) years;
         <b>@Html.DisplayNameFor(model => model.MortOut.InputedData.DurationMonths): </b>@Html.DisplayFor(model => model.MortOut.InputedData.DurationMonths) months.
     </p>
     <p>
-        The <b>Monthly payment</b> is $@Html.DisplayFor(model => model.MortOut.MonthlyPayment).
+        The <b>Monthly payment</b> is @Html.DisplayFor(model => model.MortOut.MonthlyPayment). <br />
+        The <b>Total Interest</b> is @Html.DisplayFor(model => model.TotalInterest). <br />
+        <span style="display: none" id="extra">You had a <b>total savings</b>  of <b>@Html.DisplayFor(model => model.TotalSavings)</b> due to your down payment or extra monthly payment.</span> <br />
+        <span style="display: none" id="extra1">You'll <b>pay earlier</b> by <b>@Html.DisplayFor(model => model.EarlierMonthsDifference) months.</b> </span>
     </p>
-    <button>Show Amortization Table</button>
     <div>
         <table class="table table-sm table-hover table-bordered" style="width:55%">
             <thead class="thead-dark">
@@ -89,7 +96,19 @@
                 </tr>
             </tfoot>
         </table>
-    </div>\   
+    </div>
+    <script>
+        $(document).ready(function () {
+            if (@Model.MortOut.InputedData.ExtraMonthlyPayment > 0 || @Model.MortOut.InputedData.DownPayment > 0) {
+                $('#extra').toggle();
+            }
+
+            if (@Model.EarlierMonthsDifference > 0) {
+                $('#extra1').toggle();
+            }
+
+        });
+    </script>
 </body>
 </html>
 

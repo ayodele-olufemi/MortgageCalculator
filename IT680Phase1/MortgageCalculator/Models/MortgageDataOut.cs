@@ -9,7 +9,6 @@ namespace MortgageCalculator.Models
     {
         public MortgageDataIn InputedData { get; set; }
         public double MonthlyPayment { get; set; }
-        public double TotalInterest { get; set; }
         public DateTime Date { get; set; } = DateTime.Now;
     }
 }
