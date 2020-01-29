@@ -111,11 +111,16 @@
                 <div class="card-header bg-dark text-white">
                     <h3 style="text-align: center">Added Configurations</h3>
                 </div>
-                <div class="card-body" id="addedConfBody">
-
+                <div class="card-body" >
+                    <ol id="addedConfBody">
+                        
+                    </ol>
                 </div>
                 <div>
-                    <p><span>&nbsp;&nbsp;&nbsp;</span><button type="submit" class="alert-primary col-sm-2" id="compareAll">Compare</button></p>
+                        
+                    <input id="listString"/>
+                    <button type="button" class="alert-primary col-sm-2" id="compareAll">Compare</button>
+                        
                 </div>
             </div>
 
@@ -144,7 +149,7 @@
                         var durationMonths = $('#durationMonths').val();
                         var downPayment = $('#downPayment').val();
                         var extraMonthlyPayment = $('#extraMonthlyPayment').val();
-                        $('#addedConf #addedConfBody').append('<p><b>Loan Amount: </b>' + loanAmount + '; <b>Annual Rate: </b>' + annualRate + '; <b>Duration Years: </b>' + durationYears + '; <b>Duration Months: </b>' + durationMonths + '; <b>Down Payment: </b>' + downPayment + '; <b>Extra Monthly Payment: </b>' + extraMonthlyPayment +'</p>');
+                        $('#addedConf #addedConfBody').append('<li><b>Loan Amount: </b>' + loanAmount + '; <b>Annual Rate: </b>' + annualRate + '; <b>Duration Years: </b>' + durationYears + '; <b>Duration Months: </b>' + durationMonths + '; <b>Down Payment: </b>' + downPayment + '; <b>Extra Monthly Payment: </b>' + extraMonthlyPayment +'</li>');
                         var thisConfiguration = {
                                 LoanAmount: loanAmount,
                                 DownPayment: downPayment,
@@ -160,6 +165,8 @@
                                 }
                         };
                         configurations.push(thisConfiguration);
+                    $('#listString').val(JSON.stringify(configurations));
+                    
 
                         $('#firstName').prop("disabled", true);
                         $('#lastName').prop("disabled", true);
@@ -176,9 +183,15 @@
                         $('#durationMonths').val('');
                         $('#loanAmount').focus();
                 });
-
+                
                 $('#compareAll').click(function () {
-                    console.log(configurations);
+                    url = '@Url.Action("CalculateMortgageAndAmortizationList", "Home", new { dataIn = "Dummy"})';
+                    url = url.replace("Dummy", $('#listString').val());
+                    document.location.href = url;
+                });
+
+                @*$('#compareAll').click(function () {
+
                     $.ajax({
                         type: 'GET',
                         url: '@Url.Action("CalculateMortgageAndAmortizationList", "Home")',
@@ -193,7 +206,7 @@
                                 alert("jqXHR:" + jqXHR.status + " errorThrown: " + errorThrown);
                             }
                     });
-                });
+                });*@
             });
         </script>
     </body>

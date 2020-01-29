@@ -32,7 +32,64 @@ namespace MortgageCalculatorWebApp.Controllers
             List<MortgageDataIn> dataInList = JsonConvert.DeserializeObject<List<MortgageDataIn>>(dataIn);
 
             List<MortgageAndAmortization> results = new List<MortgageAndAmortization>();
-            return View("Index");
+
+            foreach (MortgageDataIn data in dataInList)
+            {
+                MortgageAndAmortization thisResult = new MortgageAndAmortization();
+                var httpContent = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
+                using (var httpClient = new HttpClient())
+                {
+                    using (var response = await httpClient.PostAsync("https://localhost:44322/printresults", httpContent))
+                    {
+                        string apiResponse = await response.Content.ReadAsStringAsync();
+                        thisResult.MortOut = JsonConvert.DeserializeObject<MortgageDataOut>(apiResponse);
+                    }
+                    var httpContent2 = new StringContent(JsonConvert.SerializeObject(thisResult.MortOut), Encoding.UTF8, "application/json");
+                    using (var response = await httpClient.PostAsync("https://localhost:44322/printamortization", httpContent2))
+                    {
+                        string apiResponse = await response.Content.ReadAsStringAsync();
+                        thisResult.AmortOut = JsonConvert.DeserializeObject<List<AmortizationDataOut>>(apiResponse);
+                    }
+                }
+                var totalInterest = 0.0;
+                foreach (var item in thisResult.AmortOut)
+                {
+                    totalInterest += item.Interest;
+                }
+                thisResult.TotalInterest = totalInterest;
+
+                if ((data.DownPayment > 0) || (data.ExtraMonthlyPayment > 0))
+                {
+                    data.DownPayment = 0.0;
+                    data.ExtraMonthlyPayment = 0.0;
+                    MortgageAndAmortization resultWithoutSavings = new MortgageAndAmortization();
+                    var httpContent3 = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
+                    using (var httpClient = new HttpClient())
+                    {
+                        using (var response = await httpClient.PostAsync("https://localhost:44322/printresults", httpContent3))
+                        {
+                            string apiResponse = await response.Content.ReadAsStringAsync();
+                            resultWithoutSavings.MortOut = JsonConvert.DeserializeObject<MortgageDataOut>(apiResponse);
+                        }
+                        var httpContent4 = new StringContent(JsonConvert.SerializeObject(resultWithoutSavings.MortOut), Encoding.UTF8, "application/json");
+                        using (var response = await httpClient.PostAsync("https://localhost:44322/printamortization", httpContent4))
+                        {
+                            string apiResponse = await response.Content.ReadAsStringAsync();
+                            resultWithoutSavings.AmortOut = JsonConvert.DeserializeObject<List<AmortizationDataOut>>(apiResponse);
+                        }
+                    }
+                    var totalInterestWithoutSavings = 0.0;
+                    foreach (var item in resultWithoutSavings.AmortOut)
+                    {
+                        totalInterestWithoutSavings += item.Interest;
+                    }
+                    resultWithoutSavings.TotalInterest = totalInterestWithoutSavings;
+                    thisResult.TotalSavings = resultWithoutSavings.TotalInterest - thisResult.TotalInterest;
+                    thisResult.EarlierMonthsDifference = resultWithoutSavings.AmortOut.Count() - thisResult.AmortOut.Count();
+                }
+                results.Add(thisResult);
+            }
+            return View(results);
         }
 
 
