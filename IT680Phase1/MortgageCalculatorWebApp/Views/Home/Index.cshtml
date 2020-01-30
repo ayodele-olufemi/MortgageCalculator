@@ -189,24 +189,6 @@
                     url = url.replace("Dummy", $('#listString').val());
                     document.location.href = url;
                 });
-
-                @*$('#compareAll').click(function () {
-
-                    $.ajax({
-                        type: 'GET',
-                        url: '@Url.Action("CalculateMortgageAndAmortizationList", "Home")',
-                        data: {dataIn: JSON.stringify(configurations)},
-                            tradional: true,
-                            contentType: 'application/json; charset=utf-8',
-                            dataType: 'json',
-                            success: function (data) {
-                                window.location.href = data;
-                            },
-                            error: function (jqXHR, textStatus, errorThrown) {
-                                alert("jqXHR:" + jqXHR.status + " errorThrown: " + errorThrown);
-                            }
-                    });
-                });*@
             });
         </script>
     </body>

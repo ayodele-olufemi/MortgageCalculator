@@ -26,6 +26,7 @@ namespace MortgageCalculatorWebApp.Controllers
         {
             return View();
         }
+
         [HttpGet]
         public async Task<IActionResult> CalculateMortgageAndAmortizationList(string dataIn)
         {
