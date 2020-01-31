@@ -120,51 +120,54 @@
                 @Html.DisplayFor(model => model[0].MortOut.InputedData.CustomerDetails.MiddleName)
                 @Html.DisplayFor(model => model[0].MortOut.InputedData.CustomerDetails.LastName)!  You entered the following loan configuration(s):
             </p>
-            <table style="width:90%">
-                <thead class="thead-dark">
-                    <tr>
-                        <th style="color: Red">Configuration 1</th>
-                        <th style="color: Red">Configuration 2</th>
-                        <th style="color: Red">Configuration 3</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <b>@Html.DisplayNameFor(model => model[0].MortOut.InputedData.LoanAmount): </b>@Html.DisplayFor(model => model[0].MortOut.InputedData.LoanAmount); <br />
-                            <b>@Html.DisplayNameFor(model => model[0].MortOut.InputedData.AnnualRate): </b>@Html.DisplayFor(model => model[0].MortOut.InputedData.AnnualRate)%; <br />
-                            <b>@Html.DisplayNameFor(model => model[0].MortOut.InputedData.DownPayment): </b>@Html.DisplayFor(model => model[0].MortOut.InputedData.DownPayment); <br />
-                            <b>@Html.DisplayNameFor(model => model[0].MortOut.InputedData.ExtraMonthlyPayment): </b>@Html.DisplayFor(model => model[0].MortOut.InputedData.ExtraMonthlyPayment); <br />
-                            <b>@Html.DisplayNameFor(model => model[0].MortOut.InputedData.DurationYears): </b>@Html.DisplayFor(model => model[0].MortOut.InputedData.DurationYears) years; <br />
-                            <b>@Html.DisplayNameFor(model => model[0].MortOut.InputedData.DurationMonths): </b>@Html.DisplayFor(model => model[0].MortOut.InputedData.DurationMonths) months.
-                        </td>
-                        <td>
-                            <b>@Html.DisplayNameFor(model => model[1].MortOut.InputedData.LoanAmount): </b>@Html.DisplayFor(model => model[1].MortOut.InputedData.LoanAmount); <br />
-                            <b>@Html.DisplayNameFor(model => model[1].MortOut.InputedData.AnnualRate): </b>@Html.DisplayFor(model => model[1].MortOut.InputedData.AnnualRate)%; <br />
-                            <b>@Html.DisplayNameFor(model => model[1].MortOut.InputedData.DownPayment): </b>@Html.DisplayFor(model => model[1].MortOut.InputedData.DownPayment); <br />
-                            <b>@Html.DisplayNameFor(model => model[1].MortOut.InputedData.ExtraMonthlyPayment): </b>@Html.DisplayFor(model => model[1].MortOut.InputedData.ExtraMonthlyPayment); <br />
-                            <b>@Html.DisplayNameFor(model => model[1].MortOut.InputedData.DurationYears): </b>@Html.DisplayFor(model => model[1].MortOut.InputedData.DurationYears) years; <br />
-                            <b>@Html.DisplayNameFor(model => model[1].MortOut.InputedData.DurationMonths): </b>@Html.DisplayFor(model => model[1].MortOut.InputedData.DurationMonths) months.
-                        </td>
-                        <td>
-                            <b>@Html.DisplayNameFor(model => model[2].MortOut.InputedData.LoanAmount): </b>@Html.DisplayFor(model => model[2].MortOut.InputedData.LoanAmount); <br />
-                            <b>@Html.DisplayNameFor(model => model[2].MortOut.InputedData.AnnualRate): </b>@Html.DisplayFor(model => model[2].MortOut.InputedData.AnnualRate)%; <br />
-                            <b>@Html.DisplayNameFor(model => model[2].MortOut.InputedData.DownPayment): </b>@Html.DisplayFor(model => model[2].MortOut.InputedData.DownPayment); <br />
-                            <b>@Html.DisplayNameFor(model => model[2].MortOut.InputedData.ExtraMonthlyPayment): </b>@Html.DisplayFor(model => model[2].MortOut.InputedData.ExtraMonthlyPayment); <br />
-                            <b>@Html.DisplayNameFor(model => model[2].MortOut.InputedData.DurationYears): </b>@Html.DisplayFor(model => model[2].MortOut.InputedData.DurationYears) years; <br />
-                            <b>@Html.DisplayNameFor(model => model[2].MortOut.InputedData.DurationMonths): </b>@Html.DisplayFor(model => model[2].MortOut.InputedData.DurationMonths) months.
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div style="width: 90%; margin: 20px auto 20px;">
+                <table style="width:100%">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th style="color: Red">Configuration 1</th>
+                            <th style="color: Red">Configuration 2</th>
+                            <th style="color: Red">Configuration 3</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <b>@Html.DisplayNameFor(model => model[0].MortOut.InputedData.LoanAmount): </b>@Html.DisplayFor(model => model[0].MortOut.InputedData.LoanAmount); <br />
+                                <b>@Html.DisplayNameFor(model => model[0].MortOut.InputedData.AnnualRate): </b>@Html.DisplayFor(model => model[0].MortOut.InputedData.AnnualRate)%; <br />
+                                <b>@Html.DisplayNameFor(model => model[0].MortOut.InputedData.DownPayment): </b>@Html.DisplayFor(model => model[0].MortOut.InputedData.DownPayment); <br />
+                                <b>@Html.DisplayNameFor(model => model[0].MortOut.InputedData.ExtraMonthlyPayment): </b>@Html.DisplayFor(model => model[0].MortOut.InputedData.ExtraMonthlyPayment); <br />
+                                <b>@Html.DisplayNameFor(model => model[0].MortOut.InputedData.DurationYears): </b>@Html.DisplayFor(model => model[0].MortOut.InputedData.DurationYears) years; <br />
+                                <b>@Html.DisplayNameFor(model => model[0].MortOut.InputedData.DurationMonths): </b>@Html.DisplayFor(model => model[0].MortOut.InputedData.DurationMonths) months.
+                            </td>
+                            <td>
+                                <b>@Html.DisplayNameFor(model => model[1].MortOut.InputedData.LoanAmount): </b>@Html.DisplayFor(model => model[1].MortOut.InputedData.LoanAmount); <br />
+                                <b>@Html.DisplayNameFor(model => model[1].MortOut.InputedData.AnnualRate): </b>@Html.DisplayFor(model => model[1].MortOut.InputedData.AnnualRate)%; <br />
+                                <b>@Html.DisplayNameFor(model => model[1].MortOut.InputedData.DownPayment): </b>@Html.DisplayFor(model => model[1].MortOut.InputedData.DownPayment); <br />
+                                <b>@Html.DisplayNameFor(model => model[1].MortOut.InputedData.ExtraMonthlyPayment): </b>@Html.DisplayFor(model => model[1].MortOut.InputedData.ExtraMonthlyPayment); <br />
+                                <b>@Html.DisplayNameFor(model => model[1].MortOut.InputedData.DurationYears): </b>@Html.DisplayFor(model => model[1].MortOut.InputedData.DurationYears) years; <br />
+                                <b>@Html.DisplayNameFor(model => model[1].MortOut.InputedData.DurationMonths): </b>@Html.DisplayFor(model => model[1].MortOut.InputedData.DurationMonths) months.
+                            </td>
+                            <td>
+                                <b>@Html.DisplayNameFor(model => model[2].MortOut.InputedData.LoanAmount): </b>@Html.DisplayFor(model => model[2].MortOut.InputedData.LoanAmount); <br />
+                                <b>@Html.DisplayNameFor(model => model[2].MortOut.InputedData.AnnualRate): </b>@Html.DisplayFor(model => model[2].MortOut.InputedData.AnnualRate)%; <br />
+                                <b>@Html.DisplayNameFor(model => model[2].MortOut.InputedData.DownPayment): </b>@Html.DisplayFor(model => model[2].MortOut.InputedData.DownPayment); <br />
+                                <b>@Html.DisplayNameFor(model => model[2].MortOut.InputedData.ExtraMonthlyPayment): </b>@Html.DisplayFor(model => model[2].MortOut.InputedData.ExtraMonthlyPayment); <br />
+                                <b>@Html.DisplayNameFor(model => model[2].MortOut.InputedData.DurationYears): </b>@Html.DisplayFor(model => model[2].MortOut.InputedData.DurationYears) years; <br />
+                                <b>@Html.DisplayNameFor(model => model[2].MortOut.InputedData.DurationMonths): </b>@Html.DisplayFor(model => model[2].MortOut.InputedData.DurationMonths) months.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
 
-
-            <!--Div that will hold the pie chart-->
-            <table class="columns">
+            <h2 style="color: red">Comparison charts</h2>
+            <!--Div that will hold the bar charts-->
+            <table align="center" style="width: 90%">
                 <tr>
-                    <td><div id="interestChart" style="border: 1px solid #ccc"></div></td>
-                    <td><div id="savingsChart" style="border: 1px solid #ccc"></div></td>
-                    <td><div id="timeChart" style="border: 1px solid #ccc"></div></td>
+                    <td align="center" style="width: 33%"><div id="interestChart" style="border: 1px solid #ccc"></div></td>
+                    <td align="center" style="width: 33%"><div id="savingsChart" style="border: 1px solid #ccc"></div></td>
+                    <td align="center" style="width: 33%"><div id="timeChart" style="border: 1px solid #ccc"></div></td>
                 </tr>
             </table>
 
@@ -184,27 +187,31 @@
                         <span style="display: none" id="extra0">You had a <b>total savings</b>  of <b>@Html.DisplayFor(model => model[0].TotalSavings)</b> due to your down payment or extra monthly payment.</span> <br />
                         <span style="display: none" id="earlier0">You'll <b>pay earlier</b> by <b>@Html.DisplayFor(model => model[0].EarlierMonthsDifference) months.</b> </span>
                     </p>
-                    <div>
-                        <table align="center" class="table table-sm table-hover table-bordered" style="width:80%">
+                    <div style="margin-bottom: 0; border-bottom: 0;">
+                        <table align="center" class="table table-hover" style="width:80%; margin-bottom: 0;">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th style="text-align:center; width:20%">
+                                    <th style="text-align:center; width:12%">
                                         Month
                                     </th>
-                                    <th style="text-align:center; width:20%">
+                                    <th style="text-align:center; width:30%">
                                         Monthly Payment
                                     </th>
-                                    <th style="text-align:center; width:20%">
+                                    <th style="text-align:center; width:14%">
                                         Interest
                                     </th>
-                                    <th style="text-align:center; width:20%">
+                                    <th style="text-align:center; width:17%">
                                         Principal
                                     </th>
-                                    <th style="text-align:center; width:20%">
+                                    <th style="text-align:center; width:25%">
                                         Loan Balance
                                     </th>
                                 </tr>
                             </thead>
+                        </table>
+                    </div>
+                    <div class="scrollable" style="width: 80%; margin: 0px auto 0px; border-top: 0;">
+                        <table align="center" class="table table-sm table-hover table-bordered" style="width:100%;">
                             <tbody>
                                 @foreach (var item in Model[0].AmortOut)
                                 {
@@ -229,19 +236,19 @@
                             </tbody>
                             <tfoot class="thead-dark">
                                 <tr>
-                                    <th>
+                                    <th style="text-align:center;">
                                         Month
                                     </th>
-                                    <th>
+                                    <th style="text-align:center;">
                                         Monthly Payment
                                     </th>
-                                    <th>
+                                    <th style="text-align:center;">
                                         Interest
                                     </th>
-                                    <th>
+                                    <th style="text-align:center;">
                                         Principal
                                     </th>
-                                    <th>
+                                    <th style="text-align:center;">
                                         Loan Balance
                                     </th>
                                 </tr>
@@ -256,27 +263,31 @@
                         <span style="display: none" id="extra1">You had a <b>total savings</b>  of <b>@Html.DisplayFor(model => model[1].TotalSavings)</b> due to your down payment or extra monthly payment.</span> <br />
                         <span style="display: none" id="earlier1">You'll <b>pay earlier</b> by <b>@Html.DisplayFor(model => model[1].EarlierMonthsDifference) months.</b> </span>
                     </p>
-                    <div>
-                        <table align="center" class="table table-sm table-hover table-bordered" style="width:80%">
+                    <div style="margin-bottom: 0; border-bottom: 0;">
+                        <table align="center" class="table table-hover" style="width:80%; margin-bottom: 0;">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th style="text-align:center; width:20%">
+                                    <th style="text-align:center; width:12%">
                                         Month
                                     </th>
-                                    <th style="text-align:center; width:20%">
+                                    <th style="text-align:center; width:30%">
                                         Monthly Payment
                                     </th>
-                                    <th style="text-align:center; width:20%">
+                                    <th style="text-align:center; width:14%">
                                         Interest
                                     </th>
-                                    <th style="text-align:center; width:20%">
+                                    <th style="text-align:center; width:17%">
                                         Principal
                                     </th>
-                                    <th style="text-align:center; width:20%">
+                                    <th style="text-align:center; width:25%">
                                         Loan Balance
                                     </th>
                                 </tr>
                             </thead>
+                        </table>
+                    </div>
+                    <div class="scrollable" style="width: 80%; margin: 0px auto 0px; border-top: 0;">
+                        <table align="center" class="table table-sm table-hover table-bordered" style="width:100%;">
                             <tbody>
                                 @foreach (var item in Model[1].AmortOut)
                                 {
@@ -301,19 +312,19 @@
                             </tbody>
                             <tfoot class="thead-dark">
                                 <tr>
-                                    <th>
+                                    <th style="text-align:center;">
                                         Month
                                     </th>
-                                    <th>
+                                    <th style="text-align:center;">
                                         Monthly Payment
                                     </th>
-                                    <th>
+                                    <th style="text-align:center;">
                                         Interest
                                     </th>
-                                    <th>
+                                    <th style="text-align:center;">
                                         Principal
                                     </th>
-                                    <th>
+                                    <th style="text-align:center;">
                                         Loan Balance
                                     </th>
                                 </tr>
@@ -328,27 +339,31 @@
                         <span style="display: none" id="extra2">You had a <b>total savings</b>  of <b>@Html.DisplayFor(model => model[2].TotalSavings)</b> due to your down payment or extra monthly payment.</span> <br />
                         <span style="display: none" id="earlier2">You'll <b>pay earlier</b> by <b>@Html.DisplayFor(model => model[2].EarlierMonthsDifference) months.</b> </span>
                     </p>
-                    <div>
-                        <table align="center" class="table table-sm table-hover table-bordered" style="width:80%">
+                    <div style="margin-bottom: 0; border-bottom: 0;">
+                        <table align="center" class="table table-hover" style="width:80%; margin-bottom: 0;">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th style="text-align:center; width:20%">
+                                    <th style="text-align:center; width:12%">
                                         Month
                                     </th>
-                                    <th style="text-align:center; width:20%">
+                                    <th style="text-align:center; width:30%">
                                         Monthly Payment
                                     </th>
-                                    <th style="text-align:center; width:20%">
+                                    <th style="text-align:center; width:14%">
                                         Interest
                                     </th>
-                                    <th style="text-align:center; width:20%">
+                                    <th style="text-align:center; width:17%">
                                         Principal
                                     </th>
-                                    <th style="text-align:center; width:20%">
+                                    <th style="text-align:center; width:25%">
                                         Loan Balance
                                     </th>
                                 </tr>
                             </thead>
+                        </table>
+                    </div>
+                    <div class="scrollable" style="width: 80%; margin: 0px auto 0px; border-top: 0;">
+                        <table align="center" class="table table-sm table-hover table-bordered" style="width:100%;">
                             <tbody>
                                 @foreach (var item in Model[2].AmortOut)
                                 {
@@ -373,19 +388,19 @@
                             </tbody>
                             <tfoot class="thead-dark">
                                 <tr>
-                                    <th>
+                                    <th style="text-align:center;">
                                         Month
                                     </th>
-                                    <th>
+                                    <th style="text-align:center;">
                                         Monthly Payment
                                     </th>
-                                    <th>
+                                    <th style="text-align:center;">
                                         Interest
                                     </th>
-                                    <th>
+                                    <th style="text-align:center;">
                                         Principal
                                     </th>
-                                    <th>
+                                    <th style="text-align:center;">
                                         Loan Balance
                                     </th>
                                 </tr>
@@ -401,6 +416,11 @@
             width: 70%;
             margin: auto;
         }
+        .scrollable{
+            height: 500px;
+            overflow: scroll;
+        }
+    
     </style>
     <script>
         $(function () {
