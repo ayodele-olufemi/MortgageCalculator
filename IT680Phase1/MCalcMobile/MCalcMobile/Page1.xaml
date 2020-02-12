@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MCalcMobile.Page1">
+    <ContentPage.Content>
+        <StackLayout Padding="20,20,20,20" BackgroundColor="#FFFFFF">
+            <Label Text="Mortgage Calculator" TextColor="#0354FF" HorizontalTextAlignment="Center" Padding="20,0,0,0" FontSize="Large"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Loan Amount:" FontSize="Small" VerticalTextAlignment="Center" WidthRequest="170" />
+                <Entry x:Name="loanAmount" Keyboard="Numeric" VerticalTextAlignment="Center" WidthRequest="170" Text="170000" FontSize="Small"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Padding="0,0,0,0" Margin="0,0,0,0">
+                <Label x:Name="loanAmountError" IsVisible="False" TextColor="Red" FontSize="Micro" VerticalTextAlignment="Center" Padding="175,0,0,0" Margin="0,0,0,0"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Annual Rate (%):" FontSize="Small" VerticalTextAlignment="Center" WidthRequest="170"/>
+                <Entry x:Name="annualRate" Keyboard="Numeric" VerticalTextAlignment="Center" WidthRequest="170" Text="3" FontSize="Small"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Loan Duration Years:" FontSize="Small" VerticalTextAlignment="Center" WidthRequest="170"/>
+                <Entry x:Name="loanDurationYears" Keyboard="Numeric" VerticalTextAlignment="Center" WidthRequest="170" Text="15" FontSize="Small"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Loan Duration Months:" FontSize="Small" VerticalTextAlignment="Center" WidthRequest="170"/>
+                <Entry x:Name="loanDurationMonths" Keyboard="Numeric" VerticalTextAlignment="Center" WidthRequest="170" Text="0" FontSize="Small"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Down Payment:" FontSize="Small" VerticalTextAlignment="Center" WidthRequest="170"/>
+                <Entry x:Name="downPayment" Keyboard="Numeric" VerticalTextAlignment="Center" WidthRequest="170" Text="0" FontSize="Small"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Extra Monthly Payment:" FontSize="Small" VerticalTextAlignment="Center" WidthRequest="170"/>
+                <Entry x:Name="extraMonthlyPayment" Keyboard="Numeric" VerticalTextAlignment="Center" WidthRequest="170" Text="50" FontSize="Small"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button x:Name="CalculateButton" Text="Calculate" WidthRequest="150" HorizontalOptions="Center" Clicked="CalculateButton_Clicked"/>
+                <Button x:Name="ResetButton" Text="Reset" WidthRequest="150" HorizontalOptions="Center" Clicked="ResetButton_Clicked"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
